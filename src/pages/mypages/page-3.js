@@ -35,12 +35,12 @@ export default () => (
                         </tr>
                     </thead>
                     <tbody>
-                        {data.allFile.edges.map((edge, index) => (
+                        {data.allFile.edges.map(({ node }, index) => (
                             <tr key={index}>
-                                <td>{edge.node.relativePath}</td>
-                                <td>{edge.node.size}</td>
-                                <td>{edge.node.extension}</td>
-                                <td>{edge.node.birthTime}</td>
+                                <td>{node.relativePath}</td>
+                                <td>{node.size}</td>
+                                <td>{node.extension}</td>
+                                <td>{node.birthTime}</td>
                             </tr>
                         ))}
                     </tbody>
