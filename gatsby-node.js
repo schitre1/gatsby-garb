@@ -4,21 +4,21 @@ const { createFilePath } = require('gatsby-source-filesystem')
 
 //every blog post should have new path
 exports.onCreateNode = ({ node, getNode, actions }) => {
-    const { createNodeField } = actions
-    if (node.internal.type === 'MarkdownRemark') {
-        const slug = createFilePath({ node, getNode, basePath: 'posts' })
-        createNodeField({
-            node,
-            name: 'slug',
-            value: slug,
-        })
-    }
+  const { createNodeField } = actions
+  if (node.internal.type === 'MarkdownRemark') {
+    const slug = createFilePath({ node, getNode, basePath: 'posts' })
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slug,
+    })
+  }
 }
 
 exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions
-    const result = await graphql(`
-    query MyQuery {
+  const { createPage } = actions
+  const result = await graphql(`
+    query PagesQuery {
         allMarkdownRemark {
           edges {
             node {
@@ -29,14 +29,14 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }`)
-    const posts = result.data.allMarkdownRemark.edges
-    posts.forEach(({ node: post }) => {
-        createPage({
-            path: `posts${post.fields.slug}`,
-            component: PostTemplate,
-            context: {
-                slug: post.fields.slug
-            }
-        })
+  const posts = result.data.allMarkdownRemark.edges
+  posts.forEach(({ node: post }) => {
+    createPage({
+      path: `posts${post.fields.slug}`,
+      component: PostTemplate,
+      context: {
+        slug: post.fields.slug,
+      }
     })
+  })
 }
