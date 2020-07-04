@@ -5,6 +5,7 @@ const { createFilePath } = require('gatsby-source-filesystem')
 const { create } = require('domain')
 
 //every blog post should have new path
+//creates each node in blog from md files, gives it slug value
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
   if (node.internal.type === 'MarkdownRemark') {
@@ -17,11 +18,13 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 }
 
+//creates individual post for each now based on slug value- uses PostTemplate for each post
+//also creates /blog/2 etc. pages for hosting multiple posts together
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query PagesQuery {
-        allMarkdownRemark {
+        allMarkdownRemark (limit: 1000){
           edges {
             node {
               fields {

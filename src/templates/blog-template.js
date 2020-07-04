@@ -54,7 +54,11 @@ export const query = graphql`
 query MarkdownQuery($skip: Int!, $limit: Int!){
   allMarkdownRemark (
     skip: $skip,
-    limit: $limit
+    limit: $limit,
+    sort:{
+      fields: [frontmatter___date]
+      order: DESC
+    }
   ){
     totalCount
     edges {
@@ -64,7 +68,7 @@ query MarkdownQuery($skip: Int!, $limit: Int!){
         }
         id 
         frontmatter {
-          date
+          date(formatString: "dddd, MMMM Do YYYY")
           title
         }
         excerpt
