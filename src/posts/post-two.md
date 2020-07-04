@@ -4,3 +4,5 @@ date: "2020-03-01"
 ---
 
 This is the second post.
+
+![Tranquil Beach](beach.jpg)
