@@ -10,9 +10,9 @@ const Products = ({ data: { allContentfulProduct } }) => (
             {allContentfulProduct.edges.map(({ node: product }) => (
                 <div key={product.id}>
                     <h2>Garb Products</h2>
-                    <Link to={`/products/${product.slug}`}>
+                    <Link to={`/products/${product.slug}`} style={{ textDecoration: 'none', color: '#551aa3' }}>
                         <h3>
-                            {product.name}
+                            {product.name} .{' '}<span style={{ fontSize: '1.2rem', fontWeight: 300, color: '#f60' }}>$ {product.price}</span>
                         </h3>
                     </Link>
                     <Img
@@ -33,6 +33,7 @@ query PageQueryForAllProducts {
               id
               name
               slug
+              price
               image {
                   fluid(maxWidth: 800){
                       ...GatsbyContentfulFluid_tracedSVG
