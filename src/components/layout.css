@@ -591,13 +591,13 @@ ul li {
   padding-left: 0;
 }
 
-li>ol {
+li > ol {
   margin-left: 1.45rem;
   margin-bottom: calc(1.45rem / 2);
   margin-top: calc(1.45rem / 2);
 }
 
-li>ul {
+li > ul {
   margin-left: 1.45rem;
   margin-bottom: calc(1.45rem / 2);
   margin-top: calc(1.45rem / 2);
@@ -615,7 +615,7 @@ p *:last-child {
   margin-bottom: 0;
 }
 
-li>p {
+li > p {
   margin-bottom: calc(1.45rem / 2);
 }
 
@@ -729,4 +729,20 @@ pre tt:after {
 .navLink {
   color: white;
   text-decoration: none;
+}
+
+/*Netlify Identity*/
+.netlify-identity-signup {
+  color: white;
+}
+.netlify-identity-login {
+  color: white;
+}
+.netlify-identity-logout {
+  color: white;
+}
+.netlify-identity-menu {
+  list-style: none;
+  color: white;
+  margin: 0;
 }
