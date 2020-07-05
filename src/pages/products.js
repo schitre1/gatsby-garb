@@ -4,16 +4,17 @@ import Img from 'gatsby-image'
 import netlifyIdentity from 'netlify-identity-widget'
 
 import Layout from '../components/layout'
-import { render } from 'react-dom'
 
 class Products extends React.Component {
     state = {
         products: []
     }
     componentDidMount() {
-        this.getProducts()
-        netlifyIdentity.on('login', user => this.getProducts(user))
-        netlifyIdentity.on('logout', user => this.getProducts())
+        if (typeof window !== 'undefined') {
+            this.getProducts()
+            netlifyIdentity.on('login', user => this.getProducts(user))
+            netlifyIdentity.on('logout', user => this.getProducts())
+        }
     }
 
     getProducts = (user) => {
