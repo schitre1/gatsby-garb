@@ -10,11 +10,10 @@ class Products extends React.Component {
         products: []
     }
     componentDidMount() {
-        if (typeof window !== 'undefined') {
-            this.getProducts()
-            netlifyIdentity.on('login', user => this.getProducts(user))
-            netlifyIdentity.on('logout', user => this.getProducts())
-        }
+        this.getProducts()
+        netlifyIdentity.on('login', user => this.getProducts(user))
+        netlifyIdentity.on('logout', user => this.getProducts())
+
     }
 
     getProducts = (user) => {

@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import React from "react"
 import netlifyIdentity from "netlify-identity-widget"
 import gatsbyIcon from "../images/gatsby-icon.png"
-import { render } from "react-dom"
 
 
 const isActive = ({ isCurrent }) => {
